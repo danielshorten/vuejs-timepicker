@@ -51,6 +51,11 @@ export default {
     disabledValues: {
       type: Object,
       default: () => { return { hour: [], minute: [], second: [], apm: [] } }
+    },
+
+    inputClass: {
+      type: String,
+      default: 'display-time'
     }
   },
 
@@ -249,7 +254,7 @@ export default {
 
 <template>
 <span class="time-picker">
-  <input class="display-time" :readonly="!disabled" :disabled="disabled" :value="displayTime" @click.stop="toggleDropdown" type="text" />
+  <input :class="inputClass" :readonly="!disabled" :disabled="disabled" :value="displayTime" @click.stop="toggleDropdown" type="text" />
   <span class="clear-btn" v-if="!hideClearButton" v-show="!showDropdown && showClearBtn" @click.stop="clearTime">&times;</span>
   <div class="time-picker-overlay" v-if="showDropdown" @click.stop="toggleDropdown"></div>
   <div class="dropdown" v-show="showDropdown">
